@@ -1,65 +1,31 @@
-AndroLua  [中文文档](./README_zh-cn.md)
-========
+## Android 平台执行 Lua 脚本实践
 
-AndroLua is the [Lua](http://www.lua.org/) interpreter ported to the [Android](http://www.android.com/) platform. Others have ported Lua to Android, but this project is special:
+本文是基于[https://github.com/lendylongli/AndroLua](https://github.com/lendylongli/AndroLua) 进行进一步封装和探索
 
-* it includes [LuaJava](http://www.keplerproject.org/luajava/), so you can access (almost) everything the [Android API](http://developer.android.com/reference/classes.html) provides
-* because writing code on the soft keyboard can be hard, you can connect to it using TCP an upload code from your computer
-
-I created it because I wanted to learn how to use the [Android NDK](http://developer.android.com/sdk/ndk/index.html) and explore the Android API without having to go through the fuss of creating a project, writing boilerplate code, compiling and uploading the APK just to test a few lines of code.
-
-Depending on the interest, it may become something more...
+### 解决的问题
+--------
+1. Android 应用程序可以执行 Lua 脚本
+2. Lua 脚本中可以调用 Java 方法
 
 
-
-Requirements
-------------
-
-* [Android SDK](http://developer.android.com/sdk/index.html)
-* [Android NDK](http://developer.android.com/sdk/ndk/index.html)
-* (optionally) Eclipse with the [ADT](http://developer.android.com/sdk/eclipse-adt.html) plugin
-
-Lua and LuaJava sources are included.
-
-Building
+### 使用介绍
 --------
 
-Assuming that `$SDK` points to your SDK and `$NDK` points to your NDK installation, run the following:
+#### 编译 Lua 使用的 so 库文件
+git clone https://github.com/sunnybird/AndroLua.git  
+cd AndroLua/LibAndroLua/src/main/  
+ndk-build  
 
-    git clone git://github.com/mkottman/AndroLua.git
-    cd AndroLua
-    $NDK/ndk-build 
+编译完成之后, 会在 libs 目录生成 so 文件  
 
-This will build the native library, consisting of Lua and LuaJava. Then import the project into Eclipse, or run the following
+LibAndroLua 可以自行编译成  aar 文件, 供其他项目使用  
 
-    $SDK/tools/android update project -p .
-    ant debug
-    ant install
+ Demo 应用提供了简单的使用实例
 
-Usage
------
 
-The UI consist of the following:
 
-* a large "Execute" button (that's what you want to do, after all)
-* a text editor, where you can write Lua code, conveniently preloaded with the classic "Hello World!" example. A long click on the whole editor will clear it.
-* a status/output window, that shows the output of 'print' function, and is scrollable should there be many lines of output
 
-You can also work interactively by connecting to the TCP port 3333 of the device. You can do that either directly by using WiFi, or through the USB cable. For that you need to run the following:
 
-    $SDK/platform-tools/adb forward tcp:3333 tcp:3333
 
-In this version, there is a simple client `interp.lua` that uses LuaSocket. By default it will initially read stuff from `init.lua`.
 
-For example:
 
-	$ lua interp.lua
-	loading init.lua
-	
-	> = activity
-	sk.kottman.androlua.Main@405166c0
-	> for i = 1,4 do print(i) end
-	1
-	2
-	3
-	4
