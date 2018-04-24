@@ -1,5 +1,5 @@
-Android 平台执行 Lua 脚本实践
-======  
+## Android 平台执行 Lua 脚本实践
+
 本文是基于[https://github.com/lendylongli/AndroLua](https://github.com/lendylongli/AndroLua) 进行进一步封装和探索
 
 ### 解决的问题
@@ -9,6 +9,7 @@ Android 平台执行 Lua 脚本实践
 
 
 ### 使用介绍
+--------
 
 #### 编译 Lua 使用的 so 库文件
 git clone https://github.com/sunnybird/AndroLua.git  
