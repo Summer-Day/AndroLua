@@ -1,4 +1,4 @@
-AndroLua
+AndroLua  [中文文档](./README_zh-cn.md)
 ========
 
 AndroLua is the [Lua](http://www.lua.org/) interpreter ported to the [Android](http://www.android.com/) platform. Others have ported Lua to Android, but this project is special:
@@ -10,7 +10,7 @@ I created it because I wanted to learn how to use the [Android NDK](http://devel
 
 Depending on the interest, it may become something more...
 
-[中文文档](./README_zh-cn.md)
+
 
 Requirements
 ------------
