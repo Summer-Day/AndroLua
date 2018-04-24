@@ -18,6 +18,12 @@ ndk-build
 
 编译完成之后, 会在 libs 目录生成 so 文件  
 
+LibAndroLua 可以自行编译成  aar 文件, 供其他项目使用  
+
+ Demo 应用提供了简单的使用实例
+
+
+
 
 
 
