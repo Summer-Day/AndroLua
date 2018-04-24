@@ -10,6 +10,8 @@ I created it because I wanted to learn how to use the [Android NDK](http://devel
 
 Depending on the interest, it may become something more...
 
+[中文文档](./README_zh-cn.md)
+
 Requirements
 ------------
 
